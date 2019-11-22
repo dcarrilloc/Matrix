@@ -1,22 +1,20 @@
 
-
 public class Matrix {
 
     /**
+     * Agafarem, amb el bucle for, els elements de la
+     * diagonal de la matriu i els sumarem a la vaiable result.
      * @param mat array amb la que farem feina
      * @return double suma de la diagonal de la matriu
      */
     static double trace(double[][] mat) {
-        /*
-        Agafarem, amb el bucle for, els elements de la
-        diagonal de la matriu i els sumarem a la vaiable result.
-         */
 
         if (!matrixExists(mat) || !squareMatrix(mat)) {
             return Double.NaN;
         }
 
         double result = 0;
+
         for (int i = 0; i < mat.length; i++) {
             result = result + mat[i][i];
         }
@@ -24,12 +22,12 @@ public class Matrix {
     }
 
     /**
-     * @param mat1
-     * @param mat2
-     * @return
+     * @param mat1 sds
+     * @param mat2  sdsd
+     * @return sds
      */
     static double[][] add(double[][] mat1, double[][] mat2) {
-        /**
+        /*
          Crearem un array bidimensional (result[][]) on guardar la
          suma dels dos arrays importats (mat1 i mat2).
          Amb els fors recorrerem les posicions de mat1
@@ -180,15 +178,13 @@ public class Matrix {
     }
 
     /**
+     * En aquesta funció multiplicarem el valor de la posició
+     * de la matriu entrar per l'escalar importat.
      * @param mat
      * @param n
      * @return
      */
     static double[][] mult(double[][] mat, double n) {
-        /**
-         En aquesta funció multiplicarem el valor de la posició
-         de la matriu entrar per l'escalar importat.
-         */
 
         if (!matrixExists(mat) || Double.isNaN(n)) {
             return null;
@@ -241,16 +237,14 @@ public class Matrix {
     }
 
     /**
-     * @param mat
-     * @param x
-     * @param y
-     * @return
+     * Aquesta funció retorna una matriu sense la fila i
+     * la columna del valor amb coordenades x i y.
+     * @param mat dfd
+     * @param x dfdf
+     * @param y dfd
+     * @return dfd
      */
     static double[][] getMinor(double[][] mat, int x, int y) {
-        /**
-         Aquesta funció retorna una matriu sense la fila i
-         la columna del valor amb coordenades x i y.
-         */
 
         if (!matrixExists(mat)) {
             return null;
@@ -317,7 +311,7 @@ public class Matrix {
      * @return result
      */
     static double[][] transpose(double[][] mat) {
-        /**
+        /*
          Crearem un array bidimensional (result[][]) on guardarem els valors de les posicions de l'array importat
          però amb els indexs girats. Per exemple: result[2][3] = mat[3][2].
          */
@@ -388,7 +382,7 @@ public class Matrix {
             return null;
         }
 
-        /**
+        /*
          per poder utilitzar el mètode de Cramer, el determinant
          la matriu ha de ser diferent de 0.
          */
@@ -452,7 +446,7 @@ public class Matrix {
 
     private static boolean matrixExists(double mat[][]) {
 
-        if (mat.length == Double.NaN) {
+        if (Double.isNaN(mat.length)) {
             return false;
         }
 
