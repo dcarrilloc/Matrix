@@ -404,11 +404,7 @@ public class Matrix {
         double[] result = new double[matriu.length];
 
         // copiarem la matriu mat NO ampliada
-        for (int i = 0; i < matriu.length; i++) {
-            for (int j = 0; j < matriu[0].length; j++) {
-                matriu[i][j] = mat[i][j];
-            }
-        }
+        matriu = submatrix(mat,0,0,matriuAmpliada.length - 1,matriuAmpliada[0].length - 2);
 
         if (!squareMatrix(matriu)) {
             return null;
