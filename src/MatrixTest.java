@@ -359,16 +359,16 @@ public class MatrixTest {
         compare(new double[]{5,1}, Matrix.cramer(mat1));
 
         mat1 = new double[][]{ {1,-3,2},{1,5,10},{} };
-        assertEquals(null, Matrix.cramer(mat1));
+        assertNull(Matrix.cramer(mat1));
 
         mat1 = new double[][]{  };
-        assertEquals(null, Matrix.cramer(mat1));
+        assertNull(Matrix.cramer(mat1));
 
         mat1 = new double[][]{ {1,-3,2},{1,5,10},{5,6,9} };
-        assertEquals(null, Matrix.cramer(mat1));
+        assertNull(Matrix.cramer(mat1));
 
         mat1 = new double[][]{ {},{},{},{} };
-        assertEquals(null, Matrix.cramer(mat1));
+        assertNull(Matrix.cramer(mat1));
 
         mat1 = new double[][]{ {1,1,1,34.0/15.0},{1,-1,-1,-16.0/15.0},{5,3,1,8} };
         compare(new double[]{3.0/5.0,5.0/3.0,0}, Matrix.cramer(mat1));
