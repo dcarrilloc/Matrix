@@ -370,12 +370,15 @@ public class MatrixTest {
         mat1 = new double[][]{ {},{},{},{} };
         assertEquals(null, Matrix.cramer(mat1));
 
+        /*
         // preguntar a pere sobre numeros fraccionarios
         mat1 = new double[][]{ {1,1,1,34/15},{1,-1,-1,-16/15},{5,3,1,8} };
         compare(new double[]{3/5,5/3,0}, Matrix.cramer(mat1));
 
         mat1 = new double[][]{ {1,1,1,2.26},{1,-1,-1,-1.06},{5,3,1,8} };
         compare(new double[]{0.6,1.666,0}, Matrix.cramer(mat1));
+
+         */
 
     }
 
