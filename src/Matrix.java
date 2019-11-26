@@ -10,15 +10,18 @@ public class Matrix {
      */
     static double trace(double[][] mat) {
 
+        // comprovam que la matriu existeix i és quadrada
         if (!matrixExists(mat) || !squareMatrix(mat)) {
             return Double.NaN;
         }
 
         double result = 0;
 
+        // sumam els elements de la diagonal
         for (int i = 0; i < mat.length; i++) {
             result = result + mat[i][i];
         }
+
         return result;
     }
 
@@ -33,16 +36,15 @@ public class Matrix {
      * @return matriu resultant de la suma
      */
     static double[][] add(double[][] mat1, double[][] mat2) {
-        /*
 
-         */
-
+        // comprovam que les dues matrius existeixen i, a més, que les dues tenen la mateixa dimensió
         if (!matrixExists(mat1) || !matrixExists(mat2) || !testSameDimension(mat1, mat2)) {
             return null;
         }
 
         double result[][] = new double[mat1.length][mat1.length];
 
+        // sumam element per element
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result.length; j++) {
                 result[i][j] = mat1[i][j] + mat2[i][j];
@@ -68,6 +70,7 @@ public class Matrix {
 
         double result[][] = new double[mat1.length][mat2[0].length];
 
+        // multiplicació de dues matrius
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
                 for (int k = 0; k < result.length; k++) {
@@ -89,12 +92,14 @@ public class Matrix {
      */
     static double[][] power(double[][] mat, int p) {
 
+        // comprovació de que la matriu existeix
         if (!matrixExists(mat)) {
             return null;
         }
 
         double result[][] = new double[mat.length][mat[0].length];
 
+        // retorna la matriu unitaria quan una matriu està elevada a 0
         if (p == 0) {
             result = matriuUnitaria(result);
             return result;
@@ -123,6 +128,7 @@ public class Matrix {
      */
     static double[][] div(double[][] mat1, double[][] mat2) {
 
+        // comprovacions pertinents
         if (!matrixExists(mat1) || !matrixExists(mat2) || !squareMatrix(mat1) || !squareMatrix(mat2)) {
             return null;
         } else if (determinant(mat2) == 0) {
@@ -148,6 +154,7 @@ public class Matrix {
      */
     static double[][] submatrix(double[][] mat, int x1, int y1, int x2, int y2) {
 
+        // comprovam que la matriu existeix i que els indexs es troben dintre de la matriu
         if (!matrixExists(mat)) {
             return null;
         } else if (y1 < 0 || y1 > mat.length - 1 || y2 < y1 || y2 > mat.length - 1) {
@@ -160,14 +167,14 @@ public class Matrix {
         int files = 0;
         int columnes = 0;
 
-        // averiguar les files
+        // averiguar les files de la nova matriu
         for (int i = 0; i < mat.length; i++) {
             if (i >= y1 && i <= y2) {
                 files++;
             }
         }
 
-        // averiguar les columnes
+        // averiguar les columnes de la nova matriu
         for (int i = 0; i < mat[0].length; i++) {
             if (i >= x1 && i <= x2) {
                 columnes++;
@@ -176,7 +183,9 @@ public class Matrix {
 
         double[][] result = new double[files][columnes];
 
-        int a = 0, b = 0;
+        int a = 0, b = 0;       // variables auxiliars
+
+        // crearem la submatriu
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
                 if (i >= y1 && i <= y2 && j >= x1 && j <= x2) {
@@ -203,12 +212,14 @@ public class Matrix {
      */
     static double[][] mult(double[][] mat, double n) {
 
+        // comprovam que tant la matriu com n existeixen
         if (!matrixExists(mat) || Double.isNaN(n)) {
             return null;
         }
 
         double result[][] = new double[mat.length][mat[0].length];
 
+        // multiplicarem cada element de la matriu per n
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
                 result[i][j] = n * mat[i][j];
@@ -225,6 +236,7 @@ public class Matrix {
      */
     static double[][] invert(double[][] mat) {
 
+        // comprovam que la matriu existeix i que és quadrada
         if (!matrixExists(mat) || !squareMatrix(mat)) {
             return null;
         }
@@ -234,6 +246,7 @@ public class Matrix {
 
         double determinant = determinant(mat);
 
+        // no es pot invertir si el determinant de la matriu és 0.
         if (determinant == 0) {
             return null;
         }
@@ -265,6 +278,7 @@ public class Matrix {
      */
     static double[][] getMinor(double[][] mat, int x, int y) {
 
+        // comprovam que la matriu existeix i que els índexs es troben dintre de la matriu
         if (!matrixExists(mat)) {
             return null;
         } else if (x < 0 || x > mat.length - 1) {
@@ -275,7 +289,9 @@ public class Matrix {
 
         double result[][] = new double[mat.length - 1][mat[0].length - 1];
 
-        int a = 0, b = 0;
+        int a = 0, b = 0;       // variables auxiliars
+
+        // copiarem els elements de la matriu excepte aquells que compartin fila o columna amb la coordenada x,y.
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
                 if (x != i && y != j) {
@@ -300,6 +316,7 @@ public class Matrix {
      */
     static double determinant(double[][] mat) {
 
+        // comprovam que la matriu existeix i és quadrada
         if (!matrixExists(mat) || !squareMatrix(mat)) {
             return Double.NaN;
         }
@@ -337,12 +354,14 @@ public class Matrix {
      */
     static double[][] transpose(double[][] mat) {
 
+        // comprovacions
         if (!matrixExists(mat)) {
             return null;
         }
 
         double result[][] = new double[mat[0].length][mat.length];
 
+        // transposam els elements de la matriu
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
                 result[i][j] = mat[j][i];
@@ -361,6 +380,7 @@ public class Matrix {
      */
     static boolean isOrtho(double[][] mat) {
 
+        // comprovacions
         if (!matrixExists(mat) || determinant(mat) == 0 || !squareMatrix(mat)) {
             return false;
         }
@@ -395,6 +415,7 @@ public class Matrix {
      */
     static double[] cramer(double[][] mat) {
 
+        // comprovació de que la matriu existeix
         if (!matrixExists(mat)) {
             return null;
         }
@@ -406,6 +427,7 @@ public class Matrix {
         // copiarem la matriu mat NO ampliada
         matriu = submatrix(mat,0,0,matriuAmpliada.length - 1,matriuAmpliada[0].length - 2);
 
+        // comprova que la matriu ampliada tengui només una columna més que files.
         if (!squareMatrix(matriu)) {
             return null;
         }
@@ -416,6 +438,7 @@ public class Matrix {
          */
         double determinantMatriu = determinant(matriu);
 
+        // no es pot continuar si el determinant de la matriu és 0
         if (determinantMatriu == 0) {
             return null;
         }
@@ -446,6 +469,7 @@ public class Matrix {
 
         double[][] matriuUnitaria = new double[mat.length][mat[0].length];
 
+        // emplena la matriu unitària
         for (int i = 0; i < matriuUnitaria.length; i++) {
             for (int j = 0; j < matriuUnitaria[0].length; j++) {
                 if (i == j) {
@@ -468,6 +492,7 @@ public class Matrix {
      */
     private static boolean testSameDimension(double mat1[][], double mat2[][]) {
 
+        // comprova les longituds de les files i columnes
         if (mat1[0].length != mat2[0].length || mat1.length != mat2.length) {
             return false;
         }
@@ -484,6 +509,7 @@ public class Matrix {
      */
     private static boolean squareMatrix(double mat[][]) {
 
+        // comprova que la matriu tengui el mateix nombre de files que de columnes
         if (mat.length != mat[0].length) {
             return false;
         }
@@ -499,14 +525,17 @@ public class Matrix {
      */
     private static boolean matrixExists(double mat[][]) {
 
+        // si la longitud de la matriu no existeix
         if (Double.isNaN(mat.length)) {
             return false;
         }
 
+        // si les columnes o les files són 0
         if (mat.length == 0 || mat[0].length == 0) {
             return false;
         }
 
+        // comprova que cada fila tengui el mateix nombre d'elements que l'inmediatament posterior
         for (int i = 0; i < mat.length - 1; i++) {
             if (mat[i].length != mat[i + 1].length) {
                 return false;
