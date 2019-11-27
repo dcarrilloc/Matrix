@@ -163,10 +163,25 @@ public class Matrix {
         // comprovam que la matriu existeix i que els indexs es troben dintre de la matriu
         if (!matrixExists(mat)) {
             return null;
-        } else if (y1 < 0 || y1 > mat.length - 1 || y2 < y1 || y2 > mat.length - 1) {
+        } else if (y1 < 0 || y1 > mat.length - 1 || y2 > mat.length - 1) {
             return null;
-        } else if (x1 < 0 || x1 > mat[0].length - 1 || x2 < x1 || x2 > mat[0].length - 1) {
+        } else if (x1 < 0 || x1 > mat[0].length - 1 || x2 > mat[0].length - 1) {
             return null;
+        }
+
+        int aux;        // variable auxiliar
+        // intercanviar els valors si és necessari
+        if (x2 < x1) {
+            aux = x1;
+            x1 = x2;
+            x2 = aux;
+        }
+
+        // intercanviar els valors si és necessari
+        if (y2 < y1){
+            aux = y1;
+            y1 = y2;
+            y2 = aux;
         }
 
 

@@ -231,8 +231,15 @@ public class MatrixTest {
         mat = new double[][]{ {2,4,6},{3,5,7} };
         assertArrayEquals(null, Matrix.submatrix(mat, 0,0,1,3));
 
-        mat = new double[][]{ {2,4,6},{3,5,7} };
-        assertArrayEquals(null, Matrix.submatrix(mat, 2,0,1,3));
+        mat = new double[][]{ {2,4,6},{3,5,7},{3,9,4} };
+        assertArrayEquals(new double[][]{
+                {4,6},{5,7}
+        }, Matrix.submatrix(mat, 2,0,1,1));
+
+        mat = new double[][]{ {2,4,6},{3,5,7},{3,9,4} };
+        assertArrayEquals(new double[][]{
+                {2,4,6},{3,5,7},{3,9,4}
+        }, Matrix.submatrix(mat, 2,2,0,0));
 
         mat = new double[][]{  };
         assertArrayEquals(null, Matrix.submatrix(mat, 2,0,1,3));
