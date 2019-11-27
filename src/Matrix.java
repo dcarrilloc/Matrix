@@ -92,8 +92,8 @@ public class Matrix {
      */
     static double[][] power(double[][] mat, int p) {
 
-        // comprovació de que la matriu existeix
-        if (!matrixExists(mat)) {
+        // comprovació de que la matriu existeix i és quadrada
+        if (!matrixExists(mat) || !squareMatrix(mat)) {
             return null;
         }
 
