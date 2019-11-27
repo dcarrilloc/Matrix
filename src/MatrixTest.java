@@ -176,6 +176,11 @@ public class MatrixTest {
                 {1,0,0}, {0,1,0}, {0,0,1}
         }, Matrix.power(mat, 0));
 
+        mat = new double[][]{ {1,2,3},{4,5,6},{7,9,9} };
+        compareArraysDouble(new double[][] {
+                {11.0/3.0,-17.0/3.0,5.0/2.0}, {-10.0/3.0,19.0/3.0,-3}, {1.0/2.0,-11.0/6.0,1}
+        }, Matrix.power(mat, -2), 0.01);
+
         mat = new double[][]{ {1,2}, {3,4} };
         assertArrayEquals(new double[][]{
                 {37,54}, {81, 118}

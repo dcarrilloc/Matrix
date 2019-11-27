@@ -105,6 +105,12 @@ public class Matrix {
             return result;
         }
 
+        // si l'exponent és negatiu invertirem la matriu
+        if (p < 0){
+            mat = invert(mat);
+            p = Math.abs(p);
+        }
+
         // Bucle per copiar la matriu "mat" dins la matriu result amb la que farem feina més endavant
         for (int i = 0; i < mat.length; i++) {
             System.arraycopy(mat[i], 0, result[i], 0, mat[0].length);
