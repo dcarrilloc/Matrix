@@ -419,7 +419,7 @@ public class Matrix {
             for (int j = 0; j < mat.length; j++) {
                 double a = Math.abs(trans[i][j]);
                 double b = Math.abs(inv[i][j]);
-                if (a - b > 0.0001) {
+                if (a - b > 0.0001 || a - b < -0.0001 ) {
                     return false;
                 }
             }
