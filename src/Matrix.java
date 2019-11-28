@@ -32,7 +32,7 @@ public class Matrix {
      * i mat2 i les guardarem a result.
      *
      * @param mat1 matriu 1
-     * @param mat2  matriu 2
+     * @param mat2 matriu 2
      * @return matriu resultant de la suma
      */
     static double[][] add(double[][] mat1, double[][] mat2) {
@@ -87,7 +87,7 @@ public class Matrix {
      * Aquesta funció realitza la potència d'una matriu.
      *
      * @param mat matriu que elevarem.
-     * @param p exponent de la potència.
+     * @param p   exponent de la potència.
      * @return matriu resultant de realitzar la potència.
      */
     static double[][] power(double[][] mat, int p) {
@@ -106,7 +106,7 @@ public class Matrix {
         }
 
         // si l'exponent és negatiu invertirem la matriu
-        if (p < 0){
+        if (p < 0) {
             mat = invert(mat);
             p = Math.abs(p);
         }
@@ -152,10 +152,10 @@ public class Matrix {
      * creat per les coordenades i els afegirem a la matriu resultant.
      *
      * @param mat matriu
-     * @param x1 primer element de la coordenada 1
-     * @param y1 segon element de la coordenada 1
-     * @param x2 primer element de la coordenada 2
-     * @param y2 segon element de la coordenada 2
+     * @param x1  primer element de la coordenada 1
+     * @param y1  segon element de la coordenada 1
+     * @param x2  primer element de la coordenada 2
+     * @param y2  segon element de la coordenada 2
      * @return matriu resultant de calcular la submatriu de la matriu principal
      */
     static double[][] submatrix(double[][] mat, int x1, int y1, int x2, int y2) {
@@ -178,7 +178,7 @@ public class Matrix {
         }
 
         // intercanviar els valors si és necessari
-        if (y2 < y1){
+        if (y2 < y1) {
             aux = y1;
             y1 = y2;
             y2 = aux;
@@ -228,7 +228,7 @@ public class Matrix {
      * de la matriu per un escalar.
      *
      * @param mat matriu
-     * @param n nombre escalar
+     * @param n   nombre escalar
      * @return matriu resultant de multiplicar una matriu per un escalar.
      */
     static double[][] mult(double[][] mat, double n) {
@@ -252,6 +252,7 @@ public class Matrix {
 
     /**
      * Aquesta funció retorna l'inversa d'una matriu.
+     *
      * @param mat matriu
      * @return matriu invertida
      */
@@ -292,9 +293,10 @@ public class Matrix {
     /**
      * Aquesta funció retorna una matriu sense la fila i
      * la columna del valor amb coordenades x i y. És a dir, el seu adjunt.
+     *
      * @param mat matriu
-     * @param x coordenada x
-     * @param y coordenada y
+     * @param x   coordenada x
+     * @param y   coordenada y
      * @return matriu adjunta
      */
     static double[][] getMinor(double[][] mat, int x, int y) {
@@ -332,6 +334,7 @@ public class Matrix {
     /**
      * Aquesta funció calcula el determinant d'una funció. en aquest cas emprarem el métode
      * de la recursió per a calcular determinants de dimensió qualsevol.
+     *
      * @param mat matriu
      * @return deterrminant de la matriu
      */
@@ -419,7 +422,7 @@ public class Matrix {
             for (int j = 0; j < mat.length; j++) {
                 double a = Math.abs(trans[i][j]);
                 double b = Math.abs(inv[i][j]);
-                if (a - b > 0.0001 || a - b < -0.0001 ) {
+                if (a - b > 0.0001 || a - b < -0.0001) {
                     return false;
                 }
             }
@@ -446,7 +449,7 @@ public class Matrix {
         double[] result = new double[matriu.length];
 
         // copiarem la matriu mat NO ampliada
-        matriu = submatrix(mat,0,0,matriuAmpliada.length - 1,matriuAmpliada[0].length - 2);
+        matriu = submatrix(mat, 0, 0, matriuAmpliada.length - 1, matriuAmpliada[0].length - 2);
 
         // comprova que la matriu ampliada tengui només una columna més que files.
         if (!squareMatrix(matriu)) {
